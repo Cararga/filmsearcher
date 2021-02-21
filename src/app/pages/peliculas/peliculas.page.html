@@ -1,0 +1,20 @@
+
+<ion-header class="ion-text-center">
+  <ion-toolbar color="primary">
+    <ion-title class="fuenteTitulo"><b>PELIAFFINITY</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-searchbar [(ngModel)]="busqueda" (ionChange)="searchChanged($event)" placeholder="Buscar películas o series" ></ion-searchbar>
+  <ion-list >
+    <ion-item   
+      button *ngFor = "let pelicula of (resultado | async)" 
+      [routerLink]="['/', 'pelicula', pelicula.imdbID]">
+        <ion-label text-wrap>
+          <h2>{{pelicula.Title}} </h2> 
+          <h4>{{pelicula.Year}}</h4>
+        </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
